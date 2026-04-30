@@ -1,15 +1,17 @@
 import os
 import csv
 
+FILE_NAME = "expenses.csv"
+HEADERS = ["item", "price", "category"]
 
-if not os.path.exists("expenses.csv"):
-    print("Creating 'expenses.csv'...")
-    with open("expenses.csv", "w") as file:
-        writer = csv.DictWriter(file, fieldnames=["item", "price", "category"])
+if not os.path.exists(FILE_NAME):
+    print(f"Creating '{FILE_NAME}'...")
+    with open(FILE_NAME, "w") as file:
+        writer = csv.DictWriter(file, fieldnames=HEADERS)
         writer.writeheader()
-        print("File created successfully")
+        print(f"File: {FILE_NAME} created successfully.")
 else:
-    print("File: 'expenses.csv' not found.")
+    print(f"File: {FILE_NAME} not found.")
 
 
         
