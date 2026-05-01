@@ -18,12 +18,12 @@ else:
 
 # Prompt user for 'item' and 'category'
 item = input("Item: ")
-category = input("Category (e.g. food, tech, transport): ")
+category = input("Category: ")
 
 # Use while loop to ask for 'price'; if not valid, re-prompt
 while True:
     try:
-        price= float(input("Price: "))
+        price = float(input("Price: "))
         break
     except ValueError:
         print("Invalid. Please enter a valid number: ")
@@ -32,7 +32,37 @@ while True:
 with open(FILE_NAME, "a") as file:
     writer = csv.DictWriter(file, fieldnames=HEADERS)
     # Write new data as a dictionary row
-    writer.writerow({"item": item, "category": category, "price": f"${price}"}) # f-string to add '$' sign
+    writer.writerow({"item": item, "category": category, "price": price})
 
 print("-- Expense saved successfully! --")
  
+# ----- Passage 3 -----
+
+# Initialize container
+expenses = []
+
+# Access data
+with open(FILE_NAME, "r") as file:
+    reader = csv.DictReader(file)
+    # Loop through every row
+    for row in reader:
+        # Convert "price" to float
+        row["price"] = float(row["price"])
+        # Append to "expenses" list
+        expenses.append(row)
+
+# Sort list by prices (from highest to lowest)
+sorted_expenses = sorted(expenses, key=lambda expense: expense["price"], reverse=True)
+
+# Create "total" variable and set it to 0
+total = 0
+
+# Loop through sorted list
+for expense in sorted_expenses:
+    # Add current price to total
+    total = total + expense["price"]
+    # Print item, category and price
+    print(f"Item: {expense["item"]} | Category: {expense["category"]} | Price: ${expense["price"]}") # Moved "$" to the end to keep initial data "clean"
+# Print total
+print(f"TOTAL: ${total}")
+
