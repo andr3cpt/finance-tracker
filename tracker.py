@@ -62,7 +62,7 @@ for expense in sorted_expenses:
     # Add current price to total
     total = total + expense["price"]
     # Print item, category and price
-    print(f"Item: {expense["item"]} | Category: {expense["category"]} | Price: ${expense["price"]}") # Moved "$" to the end to keep initial data "clean"
+    print(f"Item: {expense['item']} | Category: {expense['category']} | Price: ${expense['price']}") # Moved "$" to the end to keep initial data "clean"
 # Print total
 print(f"TOTAL: ${total}")
 
