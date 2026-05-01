@@ -39,7 +39,7 @@ print("-- Expense saved successfully! --")
 # Initialize container
 expenses = []
 
-# Access data
+# Access data 
 with open(FILE_NAME, "r") as file:
     reader = csv.DictReader(file)
     # Loop through every row
