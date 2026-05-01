@@ -36,8 +36,6 @@ with open(FILE_NAME, "a") as file:
 
 print("-- Expense saved successfully! --")
  
-# ----- Passage 3 -----
-
 # Initialize container
 expenses = []
 
